@@ -23,3 +23,12 @@ Running development server:
 ```sh
 npm run start-dev
 ```
+
+## Links
+
+- [Wikipedia: Graffiti](https://en.wikipedia.org/wiki/Graffiti_(Palm_OS))
+- [Wikipedia: Graffiti 2](https://en.wikipedia.org/wiki/Graffiti_2)
+- [Create a Drawing App with HTML5 Canvas and JavaScript](http://www.williammalone.com/articles/create-html5-canvas-javascript-drawing-app/)
+- [Minimale Editierdistanz nach Levenshtein](http://www.cis.uni-muenchen.de/~micha/praesentationen/rechtschreibkorrektur/Levenshtein.html)
+- [Wikipedia: Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance)
+- [Levenshtein Demo](http://odur.let.rug.nl/~kleiweg/lev/)
