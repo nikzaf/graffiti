@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import {renderToJSON} from '../modules/util'
 import {renderToString} from 'react-dom/server'
 
-export class Layout extends Component {
+export default class Layout extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     state: PropTypes.object.isRequired,

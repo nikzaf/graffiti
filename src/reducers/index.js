@@ -1,3 +1,3 @@
 import {combineReducers} from 'redux'
 
-export const reducer = combineReducers({}) // TODO
+export default combineReducers({}) // TODO

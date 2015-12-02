@@ -1,7 +1,7 @@
 import {HotModuleReplacementPlugin, NoErrorsPlugin} from 'webpack'
 import {resolve} from 'path'
 
-export const config = {
+export default {
   debug: true,
   devtool: '#inline-source-map',
   entry: [
