@@ -1,4 +1,4 @@
-import {clearModuleCache} from './modules/util'
+import {clearModuleCache} from './util'
 import createCompiler from 'webpack'
 import createDevMiddleware from 'webpack-dev-middleware'
 import createExpress from 'express'
