@@ -6,22 +6,16 @@
 
 ## Usage
 
-Linting sources:
+Starting the server:
 
 ```sh
-npm run lint
+npm start
 ```
 
-Running production server:
+Testing the sources:
 
 ```sh
-npm run start
-```
-
-Running development server:
-
-```sh
-npm run start-dev
+npm test
 ```
 
 ## Links
