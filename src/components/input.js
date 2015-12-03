@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import React, {Component, PropTypes} from 'react'
 
-class Canvas extends Component {
+class Input extends Component {
   static propTypes = {
     lineColor: PropTypes.string.isRequired,
     lineWidth: PropTypes.number.isRequired,
@@ -111,4 +111,4 @@ class Canvas extends Component {
 
 export default connect(() => ({}), dispatch => {
   return bindActionCreators({recognize}, dispatch)
-})(Canvas)
+})(Input)
