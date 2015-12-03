@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import renderToJSON from '../utils/render-to-json'
+import {renderToJSON} from '../utils'
 import {renderToString} from 'react-dom/server'
 
 export default class Layout extends Component {

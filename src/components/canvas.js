@@ -1,4 +1,4 @@
-import * as ActionCreators from '../actions/points'
+import {recognize} from '../actions'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import React, {Component, PropTypes} from 'react'
@@ -7,10 +7,17 @@ class Canvas extends Component {
   static propTypes = {
     lineColor: PropTypes.string.isRequired,
     lineWidth: PropTypes.number.isRequired,
-    points: PropTypes.array.isRequired,
-    setPoints: PropTypes.func.isRequired,
+    recognize: PropTypes.func.isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired
+  }
+
+  getWidth () {
+    return this.context.canvas.clientWidth
+  }
+
+  getHeight () {
+    return this.context.canvas.clientHeight
   }
 
   requestAnimationFrame (callback) {
@@ -22,7 +29,7 @@ class Canvas extends Component {
   draw () {
     const {context, points, props} = this
 
-    context.clearRect(0, 0, context.canvas.clientWidth, context.canvas.clientHeight)
+    context.clearRect(0, 0, this.getWidth(), this.getHeight())
 
     if (!points) return
 
@@ -77,7 +84,10 @@ class Canvas extends Component {
 
     if (!points) return
 
-    this.props.setPoints(points)
+    this.props.recognize({points, size: {
+      width: this.getWidth(),
+      height: this.getHeight()
+    }})
 
     this.points = null
 
@@ -99,12 +109,6 @@ class Canvas extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {points: state.points}
-}
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(ActionCreators, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Canvas)
+export default connect(() => ({}), dispatch => {
+  return bindActionCreators({recognize}, dispatch)
+})(Canvas)
