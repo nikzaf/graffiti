@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react'
-import {renderToJSON} from '../util'
+import renderToJSON from '../utils/render-to-json'
 import {renderToString} from 'react-dom/server'
 
 export default class Layout extends Component {
   static propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.element,
     state: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired
   }
@@ -21,7 +21,7 @@ export default class Layout extends Component {
         </head>
         <body>
           <main dangerouslySetInnerHTML={{
-            __html: renderToString(children)
+            __html: children ? renderToString(children) : ''
           }}/>
 
           <script dangerouslySetInnerHTML={{

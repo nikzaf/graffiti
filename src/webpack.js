@@ -5,6 +5,7 @@ export default {
   debug: true,
   devtool: '#inline-source-map',
   entry: [
+    'babel-polyfill',
     'webpack-hot-middleware/client?reload=true',
     resolve(__dirname, './client.js')
   ],
@@ -14,8 +15,7 @@ export default {
         include: __dirname,
         loader: 'babel',
         query: {
-          plugins: ['transform-runtime', 'transform-strict-mode'],
-          presets: ['es2015', 'react', 'stage-1']
+          presets: ['es2015', 'react', 'stage-0']
         },
         test: /\.js$/
       }

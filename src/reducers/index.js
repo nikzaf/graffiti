@@ -1,3 +1,4 @@
 import {combineReducers} from 'redux'
+import points from './points'
 
-export default combineReducers({}) // TODO
+export default combineReducers({points})
