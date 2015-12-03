@@ -3,10 +3,14 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import React, {Component, PropTypes} from 'react'
 
-class Input extends Component {
+class Canvas extends Component {
   static propTypes = {
+    lineColor: PropTypes.string.isRequired,
+    lineWidth: PropTypes.number.isRequired,
     points: PropTypes.array.isRequired,
-    setPoints: PropTypes.func.isRequired
+    setPoints: PropTypes.func.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired
   }
 
   requestAnimationFrame (callback) {
@@ -16,15 +20,17 @@ class Input extends Component {
   }
 
   draw () {
-    const {context, points} = this
+    const {context, points, props} = this
 
-    context.clearRect(0, 0, context.canvas.width, context.canvas.height)
+    context.clearRect(0, 0, context.canvas.clientWidth, context.canvas.clientHeight)
 
     if (!points) return
 
-    context.strokeStyle = '#df4b26'
+    const {lineColor, lineWidth} = props
+
+    context.strokeStyle = lineColor
     context.lineJoin = 'round'
-    context.lineWidth = 5
+    context.lineWidth = lineWidth
 
     points.forEach((point, index) => {
       const lastPoint = points[index - 1]
@@ -67,16 +73,24 @@ class Input extends Component {
   }
 
   end () {
+    const {points} = this
+
+    if (!points) return
+
+    this.props.setPoints(points)
+
     this.points = null
 
     this.requestAnimationFrame(::this.draw)
   }
 
   render () {
+    const {width, height} = this.props
+
     return (
       <canvas ref={element => this.context = element.getContext('2d')}
-        width='490'
-        height='220'
+        width={width}
+        height={height}
         onMouseDown={::this.start}
         onMouseLeave={::this.end}
         onMouseMove={::this.move}
@@ -93,4 +107,4 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(ActionCreators, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Input)
+export default connect(mapStateToProps, mapDispatchToProps)(Canvas)

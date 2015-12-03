@@ -1,10 +1,13 @@
-import Input from './input'
+import Canvas from './canvas'
 import React, {Component} from 'react'
 
 export default class App extends Component {
   render () {
     return (
-      <Input/> // TODO
+      <Canvas lineColor='blue'
+        lineWidth={5}
+        width={800}
+        height={600}/>
     )
   }
 }
